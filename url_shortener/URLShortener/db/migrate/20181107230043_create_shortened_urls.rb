@@ -1,12 +1,13 @@
 class CreateShortenedUrls < ActiveRecord::Migration[5.1]
   def change
     create_table :shortened_urls do |t|
-      t.string :long_url
-      t.string :short_url
-      t.integer :user_id
+      t.string :long_url, null: false, unique: true
+      t.string :short_url, null: false, unique: true
+      t.integer :user_id, null:false
       t.timestamps
     end
-    add_index :shortened_urls, :long_url, null: false, unique: true
-    add_index :shortened_urls, :short_url, null: false, unique: true 
+    add_index :shortened_urls, :long_url, unique: true
+    add_index :shortened_urls, :short_url, unique: true
+    add_index :shortened_urls, :user_id
   end
 end
