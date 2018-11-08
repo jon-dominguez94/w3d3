@@ -22,4 +22,8 @@ class Visit < ApplicationRecord
     primary_key: :id,
     foreign_key: :url_id,
     class_name: :ShortenedUrl
+
+  def self.record_visit(user, url)
+    Visit.create(user_id: user.id, url_id: url.id)
+  end
 end
