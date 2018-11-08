@@ -34,14 +34,14 @@ class ShortenedUrl < ApplicationRecord
   end
 
   def num_clicks
-
+    visitors.count
   end
 
   def num_uniques
-
+    visitors.uniq
   end
 
   def num_recent_uniques
-    
+
   end
 end
