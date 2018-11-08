@@ -18,8 +18,8 @@ class ShortenedUrl < ApplicationRecord
     s = SecureRandom.urlsafe_base64
   end
 
-  def new_create(l_url, u_id)
-    s = ShortenedUrl.new(long_url: l_url, short_url: ShortenedUrl.random_code, user_id: u_id) unless ShortenedUrl.exists?({short_url: s})
+  def create!(l_url, user)
+    s = ShortenedUrl.new(long_url: l_url, short_url: ShortenedUrl.random_code, user_id: user.id) unless ShortenedUrl.exists?({short_url: s})
     s.save
   end
 end
