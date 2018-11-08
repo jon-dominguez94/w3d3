@@ -14,6 +14,11 @@ class ShortenedUrl < ApplicationRecord
   validates :long_url, presence: true, uniqueness: true
   validates :short_url, presence: true, uniqueness: true
 
+  belongs_to :submitter,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :User
+
   def self.random_code
     s = SecureRandom.urlsafe_base64
   end
