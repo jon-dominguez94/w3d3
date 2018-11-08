@@ -32,4 +32,16 @@ class ShortenedUrl < ApplicationRecord
     s = ShortenedUrl.new(long_url: l_url, short_url: ShortenedUrl.random_code, user_id: user.id) unless ShortenedUrl.exists?({short_url: s})
     s.save
   end
+
+  def num_clicks
+
+  end
+
+  def num_uniques
+
+  end
+
+  def num_recent_uniques
+    
+  end
 end
